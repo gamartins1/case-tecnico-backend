@@ -1,0 +1,30 @@
+package com.gabriel.jwt.controller;
+
+import java.text.ParseException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.gabriel.jwt.service.JWTService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/v1/")
+public class ApplicationController {
+
+    @Autowired
+    private JWTService jwtService;
+
+    @PostMapping("/validarJwt")
+    public Boolean validarJwt(@RequestBody String jwt) {
+
+        try {
+            return this.jwtService.validateJwt(jwt);
+        }
+        catch (RuntimeException | ParseException | JsonProcessingException e) {
+            return false;
+        }
+    }
+}
