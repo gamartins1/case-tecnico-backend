@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/")
-public class ApplicationController {
+public class ApiController {
 
     @Autowired
     private JWTService jwtService;

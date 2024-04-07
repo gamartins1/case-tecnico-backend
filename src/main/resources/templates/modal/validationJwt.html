@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+    <div>
+        <div th:fragment="modalValidateJwt" class="navbar">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Validar um JWT</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form class="row g-3 needs-validation" id="form-validate-jwt" method="post">
+                        <div class="modal-body">
+                            <div class="col-md-6 position-relative">
+                                <label for="jwtField" class="form-label">JWT</label>
+                                <input type="text" class="form-control" id="jwtField" name="jwtField" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="btnValidate">Validar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
