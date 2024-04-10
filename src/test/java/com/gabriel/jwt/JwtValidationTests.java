@@ -30,7 +30,6 @@ class JwtValidationTests {
 			.readAllBytes());
 
 		Assert.assertTrue(this.jwtService.validateJwt(jwtContent));
-
 	}
 
 	/**
