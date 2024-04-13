@@ -11,9 +11,13 @@ O arquivo do fluxograma pode ser visualizado através da plataforma [Draw.io](htt
 
 [Arquivo do fluxograma](Fluxograma%20desafio%20arquitetural%20Abertura%20de%20conta.drawio)
 
-- **Desenho técnico**: 
+- **Desenho técnico**: O desenho de arquitetura da solução visa mapear as técnologias/ferramentas que serão utilizadas no ciclo de uso da aplicação. <br>
+Para o cenário proposto, a arquitetura foi pensada com base nos serviços AWS, onde como ponto de partida é exposta uma API responsável por captar as requests dos clients, e logo em seguida realizar um balanceamento de carga conforme as chamadas recebidas, a fim de não sobrecarregar o serviço principal. <br>
+O serviço contido em um ECS realiza a validação dos dados e documentos recebidos na request, e após sua análise faz a persistência em um banco de dados e em seguida dispara uma notificação ao cliente usando um tópico SNS para informar ao cliente se há a necessidade de uma retificação ou informa a aceitação/recusa de abertura da conta, conforme o fluxograma.
 
+O arquivo do desenho técnico pode ser visualizado através da plataforma [Draw.io](https://app.diagrams.net/).
 
+[Arquivo do desenho técnico da solução](Desenho%20técnico%20da%20solução.drawio)
 
 ### Case técnico:
 
