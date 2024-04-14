@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.gabriel.jwt.model.CallRecord;
 import com.gabriel.jwt.service.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ public class ApiController {
     private JWTService jwtService;
 
     @PostMapping("/validarJwt")
-    public Boolean validarJwt(@RequestBody String jwt) {
+    public ResponseEntity<Boolean> validarJwt(@RequestBody String jwt) {
 
         Boolean isValid = null;
         CallRecord callRecord = new CallRecord(jwt);
@@ -36,6 +37,6 @@ public class ApiController {
             this.jwtService.createJwtValidationRecord(callRecord);
         }
 
-        return isValid;
+        return ResponseEntity.ok(isValid);
     }
 }

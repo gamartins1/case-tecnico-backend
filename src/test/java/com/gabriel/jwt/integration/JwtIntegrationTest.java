@@ -1,4 +1,4 @@
-package com.gabriel.jwt;
+package com.gabriel.jwt.integration;
 
 import static java.lang.Boolean.TRUE;
 import static org.junit.Assert.assertEquals;
