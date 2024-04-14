@@ -60,4 +60,5 @@ Todas as validações de JWT (tanto por chamada externa quanto por tela) ficam reg
 As telas foram desenvolvidas utilizando HTML com Thymeleaf, JavaScript.
 
 #### Informações de uso da aplicação
-- É necessário possuir o Docker instalado, pois a aplicação executará o [script Docker](docker-compose.yml) para criação de um container para disponibilização do banco de dados.
+- É necessário possuir o Docker instalado, pois a aplicação executará o [script Docker](docker-compose.yml) para criação de um container para disponibilização do banco de dados;
+- A API pode ser testada também via Postman: [Link dos projetos com a coleção de requests](__docs__/API/Validação%20de%20JWT.json);
