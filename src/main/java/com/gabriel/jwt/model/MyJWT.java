@@ -50,18 +50,18 @@ public class MyJWT {
     }
 
     /**
-     * Aplica a regra de validaÁ„o na claim 'Role', onde o valor recebido deve ser algum dos valores mapeados no enum de roles
+     * Aplica a regra de valida√ß√£o na claim 'Role', onde o valor recebido deve ser algum dos valores mapeados no enum de roles
      */
     private void validateRoleValue(String role) {
         Role.validateRole(role);
     }
 
     /**
-     * Aplica uma regra interna de validaÁ„o no valor recebido para a claim 'Seed', garantindo que o valor recebido È numÈrico
+     * Aplica uma regra interna de valida√ß√£o no valor recebido para a claim 'Seed', garantindo que o valor recebido √© num√©rico
      */
     private void validateSeedAsInteger(String seed) {
         if(!isDigits(seed)) {
-            throw new SeedValidationRuleException("O valor informado para Claim 'Seed' n„o respeita a regra de ser um valor numÈrico");
+            throw new SeedValidationRuleException("O valor informado para Claim 'Seed' n√£o respeita a regra de ser um valor num√©rico");
         }
     }
 
@@ -78,32 +78,32 @@ public class MyJWT {
     }
 
     /**
-     * Aplica a regra de validaÁ„o na claim 'Seed', onde o valor esperado deve ser um n˙mero primo.
+     * Aplica a regra de valida√ß√£o na claim 'Seed', onde o valor esperado deve ser um n√∫mero primo.
      */
     private void validateSeedAsPrime(String seed) {
         this.validateSeedAsInteger(seed);
         int seedValue = Integer.parseInt(seed);
 
         if(!this.isPrime(seedValue)) {
-            throw new SeedValidationRuleException("O valor informado para Claim 'Seed' n„o respeita a regra de n„o ter como valor um n˙mero primo");
+            throw new SeedValidationRuleException("O valor informado para Claim 'Seed' n√£o respeita a regra de n√£o ter como valor um n√∫mero primo");
         }
     }
 
     /**
-     * Aplica a regra de validaÁ„o na Claim 'Name', onde ela n„o pode possuir mais de 256 caracteres
+     * Aplica a regra de valida√ß√£o na Claim 'Name', onde ela n√£o pode possuir mais de 256 caracteres
      */
     private void validateNameLength(String name) {
         if(name.length() > 256) {
-            throw new NameValidationRuleException("A Claim 'Name' n„o pode possuir mais do que 256 caracteres. Tamanho do valor recebido: " + name.length());
+            throw new NameValidationRuleException("A Claim 'Name' n√£o pode possuir mais do que 256 caracteres. Tamanho do valor recebido: " + name.length());
         }
     }
 
     /**
-     * Aplica a regra de validaÁ„o na Claim 'Name', onde ela n„o pode possuir um valor que contenha caracteres numÈricos
+     * Aplica a regra de valida√ß√£o na Claim 'Name', onde ela n√£o pode possuir um valor que contenha caracteres num√©ricos
      */
     private void validateNameValue(String name) {
         if(Pattern.compile(".*\\d.*").matcher(name).matches()) {
-            throw new NameValidationRuleException("A Claim 'Name' possui o valor inv·lido. N„o È permitido um nome com valores numÈricos");
+            throw new NameValidationRuleException("A Claim 'Name' possui o valor inv√°lido. N√£o √© permitido um nome com valores num√©ricos");
         }
     }
 }
