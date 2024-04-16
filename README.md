@@ -62,3 +62,11 @@ As telas foram desenvolvidas utilizando HTML com Thymeleaf, JavaScript.
 #### Informações de uso da aplicação
 - É necessário possuir o Docker instalado, pois a aplicação executará o [script Docker](docker-compose.yml) para criação de um container para disponibilização do banco de dados;
 - A API pode ser testada também via Postman: [Link dos projetos com a coleção de requests](__docs__/API/Validação%20de%20JWT.json);
+
+#### Implementação
+- `ApiController::validarJwt(String)`: Método de controle da API responsável por recepcionar as requests de validação, tratá-las e devolver a response com base no processamento feito. <br>
+O método realiza a validação através da delegação ao método `JWTService::validateJwt(Boolean)`, e conforme seu retorno é definida a response da request. <br>
+Além disso, o método trata da persistência de um registro da request, gravando informações como data/hora da chamada, JWT analisado, motivo da invalidez (caso inválido), etc.
+- `JWTService::validateJwt(Boolean)`: Método do serviço responsável pela validação do JWT. <br>
+Esse método recebe a String do JWT, e logo em seguida realiza a primeira validação da estrutura. <br>
+Após essa validação, o método aplica as validações de negócio, e em caso de sucesso retorna um Boolean como **true**, no caso do JWT ser inválido, é lançada uma exceção que é tratada posteriormente, e por consequência o JWT é inferido como inválido.
