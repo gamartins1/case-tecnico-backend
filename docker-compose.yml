@@ -11,3 +11,33 @@ services:
       - '5432:5432'
     volumes:
       - ./postgres-data:/var/lib/postgresql
+
+  prometheus:
+    image: prom/prometheus:v2.30.3
+    volumes:
+      - ./prometheus:/etc/prometheus/prometheus.yaml
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
+    networks:
+      - grafana-prometheus
+
+  grafana:
+    image: grafana/grafana:7.5.7
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    volumes:
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - grafana-data:/var/lib/grafana
+    networks:
+      - grafana-prometheus
+
+volumes:
+  prometheus-data:
+  grafana-data:
+
+networks:
+  grafana-prometheus:
+    driver: bridge
